@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Welcome fearless warrior</title>
+</head>
+<style>
+    body {
+        background-color: rgb(45, 39, 49);
+        padding-top: 20vh;
+    }
+    .container {
+        width: fit-content;
+        height: 100vh;
+        overflow: hidden;
+        padding: 0px 15vw 0px 15vw;
+        box-sizing: border-box;
+    }
+
+    .bat {
+        animation: batWing 0.6s linear infinite;
+    }
+
+    @keyframes batWing {
+        0% {
+            background-image: url('frames/1.png');
+        }
+        25% {
+            background-image: url('frames/2.png');
+        }
+        45% {
+            background-image: url('frames/3.png');
+            transform: translateY(-10px);
+        }
+        65% {
+            background-image: url('frames/4.png');
+        }
+        75% {
+            background-image: url('frames/5.png');
+        }
+        100% {
+            background-image: url('frames/6.png');
+        }
+    }
+    #zeraph {
+        background-color: transparent;
+        background-image: url('frames/1.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: 50%;
+        background-clip: border-box;
+        height: 50vh;
+        width: 30vw;
+    }
+    #dialogue-box {
+        visibility: hidden;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        text-align: center;
+        padding: 20px;
+        width: 30vw;
+        height: fit-content;
+    }
+    #response {
+        visibility: hidden;
+        padding: 20px 20px 20px 20px;
+    }
+    .choice {
+        background-color: white;
+        border-radius: 20px;
+    }
+
+    @media (max-width:1200px) {
+        #dialogue-box {
+            font-size: 25px;
+            width: 60vw;
+        }
+        #zeraph {
+            width: 80vw;
+        }
+    }
+    @media (max-width:800px) {
+        #dialogue-box {
+            font-size: 20px;
+            width: 60vw;
+        } 
+        #zeraph {
+            width: 80vw;
+        }
+    }
+    @media (max-width:600px) {
+        #dialogue-box {
+            font-size: 15px;
+            width: 60vw;
+        }
+        .container {
+            width: fit-content;
+        }
+        #zeraph {
+            width: 80vw;
+        }
+
+    }
+    
+    #dialogue-box {
+        position: absolute;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: white;
+        padding: 15px;
+        border-radius: 10px;
+        border: 2px solid #000;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    
+    #dialogue-box::after {
+        content: '';
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 10px;
+        border-style: solid;
+        border-color: transparent transparent white transparent; 
+    }
+
+    #dialogue-box::before {
+        content: '';
+        position: absolute;
+        top: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 12px;
+        border-style: solid;
+        border-color: transparent transparent #000 transparent; 
+    }
+
+    .talk {
+        background-color: rgb(44, 111, 255);
+        padding: 10px 20px 10px 20px;
+        color: white;
+        border-radius: 10px;
+        position: absolute;
+        transform: translateY(0px);
+        transform: translate(80px,80px);
+        opacity: 0;
+        transition: transform 1s ease,opacity 0.6s ease;
+        margin: auto;
+    }
+
+    .talk:hover {
+        background-color: transparent;
+        border: 1px solid white;
+        color: white;
+    }
+
+    #accept {
+        width: fit-content;
+        height: fit-content;
+        margin: auto;
+        visibility: hidden;
+    }
+
+    .scroll {
+        animation: scrollUp 1s forwards;
+    }
+
+    @keyframes scrollUp {
+        0% {
+            transform: translateY(100vh);
+        }
+        50% {
+            transform: translateY(-20vh);
+        }
+        100% { 
+            transform: translateY(0vh);
+        }
+    }
+
+    #accept .btn{
+        background-color: rgb(166, 82, 245);
+        padding: 10px 20px 10px 20px;
+        color: black;
+        border-radius: 10px;
+        border: 2px solid black;
+        box-shadow: 5px 5px black;
+        margin: auto;
+    }
+
+    #accept .btn:hover {
+        background-color: rgb(112, 52, 168);
+        color: black;
+    }
+
+    #zeraph:hover .talk {
+        transform: translate(50px,40px);
+        opacity: 1;
+    }
+
+    .navbar {
+        font-family:Arial, Helvetica, sans-serif;
+    }
+
+    .navbar-nav li a {
+        color: white;
+    }
+    .navbar-nav li a:hover {
+        background-color: transparent;
+    }
+    .fly {
+        animation: flyAway 0.5s forwards;
+    }
+
+    @keyframes flyAway {
+        0% {
+            background-image: url('frames/dec-1.png');
+            transform: translateY(0vh);
+        }
+        20% {
+            background-image: url('frames/dec-2.png');
+            transform: translateY(0vh);
+        }
+        40% {
+            background-image: url('frames/dec-3.png');
+            transform: translateY(0vh);
+        }
+        60% {
+            background-image: url('frames/dec-4.png');
+            transform: translateY(0vh);
+        }
+        65% {
+            background-image: url('frames/dec-5.png');
+            transform: translateY(0vh);
+        }
+        70%{
+            background-image: url('frames/dec-6.png');
+            transform: translateY(0vh);
+        }
+        100% {
+            background-image: url('frames/dec-6.png');
+            transform: translateY(-100vh);
+        }
+    }
+
+</style>
+<body>
+    <!-- <nav class="navbar navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Faniry Ranaivoson</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-bottom">
+              <li><a href="">Gallerie</a></li>
+              <li><a href="#">Comics</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">A propos</a></li>
+                <li><a href=""></a></li>
+            </ul>
+          </div>
+        </div>
+    </nav> -->
+    <div class="container">
+        <div class="jumbotron" id="zeraph">
+            <button class="btn talk" id="button" onclick="typeWriterEffect();">Parler</button>
+        </div>
+        <div id="accept">
+            <button class="btn" onclick="flyAway();">Allons-y</button>
+        </div>
+        <div class="container" id="dialogue-box"></div>
+    </div>
+</body>
+<script>
+    
+    const texts = [
+        "Tiens donc, tiens tiens...",
+        "Voilà une personne décidée à venir me parler",
+        "Ta longue et périeuse quête t'a finalement mené à moi, vaillant héro...",
+        "...ou criminel en cavale ?",
+        "....",
+        "Enfin, ce que tu es m'importe peu",
+        "J'aimerai te récompenser pour m'avoir prêté attention",
+        "Accepte donc que je te fasse visiter la demeure de mon maître",
+    ];
+
+    const dialogueBox = document.getElementById('dialogue-box');
+    const button = document.getElementById('button');
+    const zeraph = document.getElementById('zeraph');
+    const acceptButton = document.getElementById('accept');
+    zeraph.classList.add('bat');
+    let textIndex = 0; 
+    let charIndex = 0; 
+    function typeWriterEffect() {
+        button.style.visibility = 'hidden';
+        dialogueBox.style.visibility = 'visible';
+        if (charIndex < texts[textIndex].length) {
+            dialogueBox.innerHTML += texts[textIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(typeWriterEffect, 50); 
+        } else {
+            textIndex++;
+            if (textIndex < texts.length) {
+                charIndex = 0;
+                setTimeout(() => {
+                    dialogueBox.innerHTML = ""; 
+                    typeWriterEffect(); 
+                }, 1000); 
+            }
+            else {
+                dialogueBox.style.visibility = 'hidden';
+                textIndex = 0;
+                charIndex = 0;
+                dialogueBox.innerHTML = "";
+                acceptButton.style.visibility = 'visible';
+                acceptButton.classList.add('scroll');
+            }
+        }
+    }
+    function flyAway() {
+        acceptButton.style.visibility = 'hidden';
+        setTimeout(() => {
+            zeraph.classList.remove('bat');
+            setTimeout(() => {
+                zeraph.classList.add('fly');
+            },500);
+            setTimeout(() => {
+                window.location.href = 'hello.html';
+            },1500)
+        },500)
+    }
+
+</script>
+</html>
